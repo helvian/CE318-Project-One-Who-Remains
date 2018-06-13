@@ -60,16 +60,16 @@ public class MutantBehaviour : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
+	//play footstep noises while the mutant is moving and not attacking
 	IEnumerator Footsteps() {
 		while (true) {
-			if (animator.GetBool("Attack") == true) {
-				footsteps.Stop ();
-				yield return new WaitForFixedUpdate ();
-			} else {
+			if (animator.GetFloat ("Speed") > 2f && animator.GetBool("Attack") == false && footsteps.isPlaying == false) {
+				footsteps.pitch = Random.Range (0.7f, 1.1f);
 				footsteps.Play ();
-				yield return new WaitForFixedUpdate ();
 			}
+			yield return new WaitForEndOfFrame();
 		}
+
 	}
 		
 }
