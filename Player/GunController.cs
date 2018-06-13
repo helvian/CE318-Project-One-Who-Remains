@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour {
 
 	public ParticleSystem muzzleFlash; //effect from the barrel
 	public ParticleSystem spray; //effect on the spot hit by gun
-	public Camera camera; //camera viewpoint of the player
+	public Camera cam; //camera viewpoint of the player
 	private int layerMask; 
 	public GameObject particleParent; //cleanup object for particles
 	public GameObject statObjectParent; //secondary storage for gun stats
@@ -153,9 +153,9 @@ public class GunController : MonoBehaviour {
 		//for each bullet to be fired per click
 		for (int i = 0; i < gun.pelletCount; i++) {
 			//displace the ray direction by a certain amount
-			Vector3 bulletSpread = camera.transform.forward + (Random.insideUnitSphere * gun.accuracy);
+			Vector3 bulletSpread = cam.transform.forward + (Random.insideUnitSphere * gun.accuracy);
 			muzzleFlash.Play();
-			Ray ray = new Ray (camera.transform.position, bulletSpread);
+			Ray ray = new Ray (cam.transform.position, bulletSpread);
 			if (Physics.Raycast(ray, out hit, gun.range, layerMask)) {
 				//spawn a laser hit effect at the place of impact
 				ParticleSystem spawnedSpray = Instantiate (spray, hit.point, Quaternion.identity) as ParticleSystem;

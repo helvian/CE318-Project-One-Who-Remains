@@ -9,7 +9,7 @@ public class DestroyEffect : MonoBehaviour {
 
 	void Start () {
 		ParticleSystem ps = GetComponent<ParticleSystem> ();
-		Destroy (gameObject, ps.duration *2);
+		Destroy (gameObject, ps.main.duration *2);
 	}
 
 }

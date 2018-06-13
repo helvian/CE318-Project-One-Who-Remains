@@ -55,7 +55,7 @@ public class MutantBehaviour : MonoBehaviour {
 			}
 		}
 		//death
-		nma.Stop ();
+		nma.isStopped = true;
 		yield return new WaitForSeconds (0.6f);
 		Destroy (gameObject);
 	}

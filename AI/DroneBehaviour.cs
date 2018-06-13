@@ -67,7 +67,7 @@ public class DroneBehaviour : MonoBehaviour {
 		}
 
 		//death and explosion spawning
-		nma.Stop ();
+		nma.isStopped = true;
 		ParticleSystem spawnedExplosion = Instantiate (explosion, transform.position, Quaternion.identity) as ParticleSystem;
 		spawnedExplosion.transform.parent = particleParent.transform;
 		spawnedExplosion.Play ();
